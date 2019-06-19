@@ -56,9 +56,9 @@ BEGIN
    begin		
       i_reset <= '1';
       -- hold reset state for 100 ns.
-      wait for 100 ns;
+      wait for 10*i_clk_period;
       i_reset <= '0';
-      wait for i_clk_period*1000;
+      wait for i_clk_period*100;
 
       -- insert stimulus here 
 
