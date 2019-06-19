@@ -29,10 +29,12 @@ begin
             s_count <= 0;
             s_tick <= '0';
         elsif RISING_EDGE(i_clk) then
-            s_count <= s_count + 1;
-            if (s_count = MAX_COUNT - 1) then
-                s_count <= 0;
-                s_tick <= '1'; -- Maybe here we should do something else
+            if (i_enable  = '1') then
+                s_count <= s_count + 1;
+                if (s_count = MAX_COUNT - 1) then
+                    s_count <= 0;
+                    s_tick <= '1'; -- Maybe here we should do something else
+                end if;
             end if;
         end if;
     end process;
