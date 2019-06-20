@@ -7,8 +7,8 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 -- Uncomment the following library declaration if instantiating
 -- any Xilinx primitives in this code.
---library UNISIM;
---use UNISIM.VComponents.all;
+library UNISIM;
+use UNISIM.VComponents.all;
 
 
 -- If you want to divide by N you should count N/2
@@ -23,7 +23,15 @@ end freq_div;
 architecture Behavioral of freq_div is
 signal s_count : INTEGER RANGE 0 to MAX_COUNT - 1 := 0;
 signal s_oclk : STD_LOGIC := '0';
+signal buffered_s_oclk : STD_LOGIC := '0';
 begin
+
+    clk_buffer : bufg PORT MAP
+    (
+    I => s_oclk,
+    O => buffered_s_oclk
+    );
+
 p_count: process(i_clk,i_reset)
 begin
     if(i_reset = '1') then
