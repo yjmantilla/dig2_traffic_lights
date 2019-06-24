@@ -44,7 +44,7 @@ entity fsm_traffic_lights is
         o_trigger_green: out STD_LOGIC;
         o_trigger_reset: out STD_LOGIC;
         o_trigger_ped: out STD_LOGIC;
-        o_trigger_ext_green: out STD_LOGIC;
+        o_trigger_ext_green: out STD_LOGIC
     );
 
     -- Pin Assignment

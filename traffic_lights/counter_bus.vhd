@@ -10,12 +10,14 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
+
+
 Entity counter is
 Generic(MAX_COUNT : INTEGER := 10);  
     Port ( i_clk : in  STD_LOGIC;
            i_enable : in  STD_LOGIC;
            i_reset : in  STD_LOGIC;
-           o_tick : out  STD_LOGIC);
+           o_count : out  STD_LOGIC_VECTOR ());
 end counter;
 
 architecture Behavioral of counter is
