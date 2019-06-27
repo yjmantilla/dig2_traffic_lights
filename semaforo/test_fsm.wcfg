@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="Y:/xilinx/traffic_lights/semaforo/test_fsm_isim_beh.wdb" id="1" type="auto">
+         <top_modules>
+            <top_module name="std_logic_1164" />
+            <top_module name="test_fsm" />
+            <top_module name="vcomponents" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <WVObjectSize size="14" />
+   <wvobject fp_name="/test_fsm/i_clk" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">i_clk</obj_property>
+      <obj_property name="ObjectShortName">i_clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_fsm/i_reset" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">i_reset</obj_property>
+      <obj_property name="ObjectShortName">i_reset</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_fsm/i_sensor" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">i_sensor</obj_property>
+      <obj_property name="ObjectShortName">i_sensor</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_fsm/i_button" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">i_button</obj_property>
+      <obj_property name="ObjectShortName">i_button</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_fsm/o_main_light" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">o_main_light[2:0]</obj_property>
+      <obj_property name="ObjectShortName">o_main_light[2:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_fsm/o_side_light" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">o_side_light[2:0]</obj_property>
+      <obj_property name="ObjectShortName">o_side_light[2:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_fsm/o_ped_light" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">o_ped_light[2:0]</obj_property>
+      <obj_property name="ObjectShortName">o_ped_light[2:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_fsm/o_led_clk" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">o_led_clk</obj_property>
+      <obj_property name="ObjectShortName">o_led_clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_fsm/i_clk_period" type="other" db_ref_id="1">
+      <obj_property name="ElementShortName">i_clk_period</obj_property>
+      <obj_property name="ObjectShortName">i_clk_period</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_fsm/uut/s_count" type="other" db_ref_id="1">
+      <obj_property name="ElementShortName">s_count</obj_property>
+      <obj_property name="ObjectShortName">s_count</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_fsm/uut/s_reset_count" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">s_reset_count</obj_property>
+      <obj_property name="ObjectShortName">s_reset_count</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_fsm/uut/current_state" type="other" db_ref_id="1">
+      <obj_property name="ElementShortName">current_state</obj_property>
+      <obj_property name="ObjectShortName">current_state</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_fsm/uut/next_state" type="other" db_ref_id="1">
+      <obj_property name="ElementShortName">next_state</obj_property>
+      <obj_property name="ObjectShortName">next_state</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_fsm/uut/s_button_register" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">s_button_register</obj_property>
+      <obj_property name="ObjectShortName">s_button_register</obj_property>
+   </wvobject>
+</wave_config>

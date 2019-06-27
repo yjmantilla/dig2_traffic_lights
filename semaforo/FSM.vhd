@@ -19,12 +19,14 @@ entity FSM is
 	 time_reset : integer := 3);
 	 
 	 Port ( i_clk : in  STD_LOGIC; --relog de 1hz
-           i_reset : in  STD_LOGIC;
-           i_sensor : in  STD_LOGIC;
-           i_button : in  STD_LOGIC;
-           o_main_light : out  STD_LOGIC_VECTOR (2 downto 0); --semaforo calle principal
-           o_side_light : out  STD_LOGIC_VECTOR (2 downto 0); --semaforo calle secundaria
-		   o_ped_light : out  STD_LOGIC_VECTOR (2 downto 0)); --semaforo peatones
+            i_reset : in  STD_LOGIC;
+            i_sensor : in  STD_LOGIC;
+            i_button : in  STD_LOGIC;
+            o_main_light : out  STD_LOGIC_VECTOR (2 downto 0); --semaforo calle principal
+            o_side_light : out  STD_LOGIC_VECTOR (2 downto 0); --semaforo calle secundaria
+			o_ped_light : out  STD_LOGIC_VECTOR (2 downto 0); --semaforo peatones
+			o_led_clk : out STD_LOGIC
+			); 
 
 	-- Pins assingment
 	ATTRIBUTE LOC: STRING;
@@ -32,9 +34,10 @@ entity FSM is
 	ATTRIBUTE LOC OF i_reset  : SIGNAL IS "H13";				-- BTN3
 	ATTRIBUTE LOC OF i_sensor : SIGNAL IS "G18";				-- SW0
 	ATTRIBUTE LOC OF i_button    : SIGNAL IS "E18";			-- SW1
-	ATTRIBUTE LOC OF o_main_light    : SIGNAL IS "J14,J15,K15";-- LD 0,1,2  
-	ATTRIBUTE LOC OF o_side_light   : SIGNAL IS "K14,E17,P15"; -- LD 3,4,5
-	ATTRIBUTE LOC OF o_ped_light  : SIGNAL IS "F4,F17,R4";  	-- LD 6,X,7
+	ATTRIBUTE LOC OF o_main_light    : SIGNAL IS "J14,J15,K15";-- LED 0,1,2 : G,Y,R
+	ATTRIBUTE LOC OF o_side_light   : SIGNAL IS "K14,E17,P15"; -- LED 3,4,5: G,Y;R
+	ATTRIBUTE LOC OF o_ped_light  : SIGNAL IS "F4,F17,H17";  	-- LED 6,X,X --how to assign this to dont care?
+	ATTRIBUTE LOC OF o_led_clk : SIGNAL IS "R4"; -- LED 7
 end FSM;
 
 architecture Behavioral of FSM is
@@ -67,7 +70,7 @@ architecture Behavioral of FSM is
 	-- Frequency Divider
 	
 	component freq_div
-		Generic( MAX_COUNT : INTEGER := 25000000);
+		Generic( MAX_COUNT : INTEGER := 1);--25000000);
 		Port
 		(
 			i_clk : in STD_LOGIC;
@@ -85,21 +88,29 @@ begin
 		o_clk => s_clk1hz
 	);
 	
-p_fsm_state_change: process(s_clk1hz,i_reset)
+p_fsm_state_change: process(i_clk,i_reset,current_state,next_state)
 begin
+
 	if (i_reset = '1') then
 		current_state <= RS;
-		elsif (RISING_EDGE(s_clk1hz)) then
+		elsif(RISING_EDGE(i_clk)) then
 			current_state <= next_state;
+	end if;
+	
+	if(current_state = next_state) then
+		s_reset_count <= '0';		
+	else 
+		s_reset_count <= '1';
 	end if;
 end process;
 
 p_counter: process(s_clk1hz,s_count,s_reset_count)
 begin
+	if (RISING_EDGE(s_clk1hz)) then
+			s_count <= s_count + 1;
+	end if;	
 	if (s_reset_count = '1') then
 		s_count <= 0;
-	elsif (RISING_EDGE(s_clk1hz)) then
-			s_count <= s_count + 1;
 	end if;
 end process;
 
@@ -116,82 +127,67 @@ p_button: process(i_button,current_state)
 	end process;
 
 	
-p_fsm_comb : process(current_state,s_count,s_button_register,i_sensor)
+p_fsm_states : process(current_state,s_count,s_button_register,i_sensor,s_clk1hz)
 	begin
+	if(RISING_EDGE(s_clk1hz)) then
 		case current_state is
 			when RS =>
-				if (s_count = time_reset) then 
+				if (s_count = time_reset ) then 
 					next_state <= MG;
-					s_reset_count <= '1';
 				else
 					next_state <= RS;
-					s_reset_count <= '0';
 				end if;
 			
 			when MG =>
 				if (s_count = time_green and i_sensor = '0') then
 					next_state <= MY;
-					s_reset_count <= '1';
 				elsif (s_count = time_green and i_sensor = '1') then
 					next_state <= ME;
-					s_reset_count <= '1';
 				else
 					next_state <= MG;
-					s_reset_count <= '0';
 				end if;
 				
 			when ME =>
 				if (s_count = time_ext) then
 					next_state <= MY;
-					s_reset_count <= '1';
 				else 
 					next_state <= ME;
-					s_reset_count <= '0';
 				end if;
 				
 			when MY =>
 				if (s_count = time_yellow and s_button_register = '0') then
 					next_state <= SG;
-					s_reset_count <= '1';
 				elsif (s_count = time_yellow and s_button_register = '1') then
 					next_state <= PG;
-					s_reset_count <= '1';
 				else
 					next_state <= MY;
-					s_reset_count <= '0';
 			end if;
 			
 			when SG =>
 				if (s_count = time_green) then
 					next_state <= SY;
-					s_reset_count <= '1';
 				else 
 					next_state <= SG;
-					s_reset_count <= '0';
 				end if;
 				
 			when SY =>
 				if(s_count = time_yellow) then
 					next_state <= MG;
-					s_reset_count <= '1';
 				else
 					next_state <= SY;
-					s_reset_count <= '0';
 				end if;
 				
 			when PG => 
 				if (s_count = time_walk) then
 					next_state <= SG;
-					s_reset_count <= '1';
 				else 
 					next_state <= PG;
-					s_reset_count <= '0';
 				end if;
 					
 		end case;
-
+		end if;
 end process;	
-p_fsm_outputs: process(s_clk1hz,i_reset,current_state)
+p_fsm_outputs: process(i_reset,current_state)
 begin
 	case current_state is
 		
@@ -237,6 +233,6 @@ end process;
 o_main_light <= s_main_light;
 o_side_light <= s_side_light;
 o_ped_light <= s_ped_light;
-
+o_led_clk <= s_clk1hz;
 end Behavioral;
 

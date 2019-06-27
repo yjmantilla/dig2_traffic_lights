@@ -21,7 +21,7 @@ entity freq_div is
 end freq_div;
 
 architecture Behavioral of freq_div is
-signal s_count : INTEGER RANGE 0 to MAX_COUNT - 1 := 0;
+signal s_count : INTEGER RANGE 0 to MAX_COUNT - 1:= 0;
 signal s_oclk : STD_LOGIC := '0';
 signal buffered_s_oclk : STD_LOGIC := '0';
 begin
@@ -36,7 +36,7 @@ p_count: process(i_clk,i_reset,s_oclk,buffered_s_oclk)
 begin
     if(i_reset = '1') then
         s_count <= 0;
-        s_oclk <= '0';  -- Not sure why to 1 though
+        s_oclk <= '1';  -- Not sure why to 1 though
     elsif RISING_EDGE(i_clk) then
         s_count <= s_count + 1;
         if (s_count = MAX_COUNT - 1) then
