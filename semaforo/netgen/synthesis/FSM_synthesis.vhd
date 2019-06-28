@@ -7,7 +7,7 @@
 -- \   \   \/     Version: P.20131013
 --  \   \         Application: netgen
 --  /   /         Filename: FSM_synthesis.vhd
--- /___/   /\     Timestamp: Thu Jun 27 17:46:24 2019
+-- /___/   /\     Timestamp: Thu Jun 27 19:58:45 2019
 -- \   \  /  \ 
 --  \___\/\___\
 --             
@@ -83,119 +83,97 @@ architecture Structure of FSM is
   signal Mcount_s_count_cy_8_rt_58 : STD_LOGIC; 
   signal Mcount_s_count_cy_9_rt_60 : STD_LOGIC; 
   signal Mcount_s_count_xor_31_rt_62 : STD_LOGIC; 
+  signal N0 : STD_LOGIC; 
   signal N1 : STD_LOGIC; 
-  signal N12 : STD_LOGIC; 
+  signal N11 : STD_LOGIC; 
+  signal N13 : STD_LOGIC; 
   signal N14 : STD_LOGIC; 
+  signal N19 : STD_LOGIC; 
   signal N2 : STD_LOGIC; 
-  signal N22 : STD_LOGIC; 
-  signal N24 : STD_LOGIC; 
-  signal N26 : STD_LOGIC; 
-  signal N27 : STD_LOGIC; 
-  signal N29 : STD_LOGIC; 
-  signal N31 : STD_LOGIC; 
-  signal N32 : STD_LOGIC; 
-  signal N34 : STD_LOGIC; 
-  signal N36 : STD_LOGIC; 
-  signal N37 : STD_LOGIC; 
-  signal N39 : STD_LOGIC; 
-  signal N41 : STD_LOGIC; 
-  signal N45 : STD_LOGIC; 
-  signal N47 : STD_LOGIC; 
-  signal N49 : STD_LOGIC; 
-  signal N50 : STD_LOGIC; 
-  signal N51 : STD_LOGIC; 
-  signal N52 : STD_LOGIC; 
-  signal N81 : STD_LOGIC; 
-  signal current_state_2_1_121 : STD_LOGIC; 
-  signal current_state_4_1_124 : STD_LOGIC; 
-  signal current_state_5_1_126 : STD_LOGIC; 
-  signal current_state_6_1_128 : STD_LOGIC; 
-  signal i_button_BUFGP_130 : STD_LOGIC; 
-  signal i_clk_BUFGP_132 : STD_LOGIC; 
-  signal i_reset_IBUF_134 : STD_LOGIC; 
-  signal i_sensor_IBUF_136 : STD_LOGIC; 
-  signal next_state_mux0004_0_1_158 : STD_LOGIC; 
-  signal next_state_mux0004_1_Q_159 : STD_LOGIC; 
-  signal next_state_mux0004_2_12_160 : STD_LOGIC; 
+  signal N21 : STD_LOGIC; 
+  signal N25 : STD_LOGIC; 
+  signal N5 : STD_LOGIC; 
+  signal N7 : STD_LOGIC; 
+  signal i_button_BUFGP_114 : STD_LOGIC; 
+  signal i_clk_BUFGP_116 : STD_LOGIC; 
+  signal i_reset_IBUF_118 : STD_LOGIC; 
+  signal i_sensor_IBUF_120 : STD_LOGIC; 
+  signal next_state_cmp_eq0003 : STD_LOGIC; 
+  signal next_state_mux0004_0_1_142 : STD_LOGIC; 
+  signal next_state_mux0004_1_Q_143 : STD_LOGIC; 
+  signal next_state_mux0004_2_33_144 : STD_LOGIC; 
   signal next_state_mux0004_2_36 : STD_LOGIC; 
-  signal next_state_mux0004_3_Q_162 : STD_LOGIC; 
-  signal next_state_mux0004_4_0_163 : STD_LOGIC; 
-  signal next_state_mux0004_4_14_164 : STD_LOGIC; 
-  signal next_state_mux0004_4_23_165 : STD_LOGIC; 
-  signal next_state_mux0004_4_35 : STD_LOGIC; 
-  signal next_state_mux0004_5_Q_167 : STD_LOGIC; 
+  signal next_state_mux0004_2_9_146 : STD_LOGIC; 
+  signal next_state_mux0004_3_Q_147 : STD_LOGIC; 
+  signal next_state_mux0004_4_2_148 : STD_LOGIC; 
+  signal next_state_mux0004_4_30 : STD_LOGIC; 
+  signal next_state_mux0004_5_Q_150 : STD_LOGIC; 
   signal next_state_mux0004_6_Q : STD_LOGIC; 
-  signal o_led_clk_OBUF_170 : STD_LOGIC; 
-  signal o_main_light_0_OBUF_174 : STD_LOGIC; 
-  signal o_main_light_2_OBUF_175 : STD_LOGIC; 
-  signal o_ped_light_0_OBUF_179 : STD_LOGIC; 
-  signal o_ped_light_1_OBUF_180 : STD_LOGIC; 
-  signal o_side_light_0_OBUF_184 : STD_LOGIC; 
-  signal port_map_Mcount_s_count : STD_LOGIC; 
-  signal port_map_Mcount_s_count1 : STD_LOGIC; 
-  signal port_map_Mcount_s_count2 : STD_LOGIC; 
-  signal port_map_Mcount_s_count3 : STD_LOGIC; 
-  signal port_map_s_count_cmp_eq0000 : STD_LOGIC; 
-  signal port_map_s_oclk_194 : STD_LOGIC; 
+  signal o_led_clk_OBUF_153 : STD_LOGIC; 
+  signal o_main_light_0_OBUF_157 : STD_LOGIC; 
+  signal o_main_light_2_OBUF_158 : STD_LOGIC; 
+  signal o_ped_light_0_OBUF_162 : STD_LOGIC; 
+  signal o_ped_light_1_OBUF_163 : STD_LOGIC; 
+  signal o_side_light_0_OBUF_167 : STD_LOGIC; 
+  signal port_map_s_oclk_168 : STD_LOGIC; 
   signal port_map_s_oclk_not0001 : STD_LOGIC; 
-  signal s_button_register_196 : STD_LOGIC; 
-  signal s_reset_count : STD_LOGIC; 
-  signal s_reset_count103_230 : STD_LOGIC; 
-  signal s_reset_count104_231 : STD_LOGIC; 
-  signal s_reset_count76_232 : STD_LOGIC; 
+  signal s_button_register_170 : STD_LOGIC; 
+  signal s_count_or0000 : STD_LOGIC; 
+  signal s_count_or0000107_204 : STD_LOGIC; 
+  signal s_count_or000040_205 : STD_LOGIC; 
+  signal s_count_or000080_206 : STD_LOGIC; 
   signal Mcount_s_count_cy : STD_LOGIC_VECTOR ( 30 downto 0 ); 
   signal Mcount_s_count_lut : STD_LOGIC_VECTOR ( 0 downto 0 ); 
   signal Result : STD_LOGIC_VECTOR ( 31 downto 0 ); 
   signal current_state : STD_LOGIC_VECTOR ( 6 downto 0 ); 
   signal next_state : STD_LOGIC_VECTOR ( 6 downto 0 ); 
-  signal next_state_cmp_eq00001_wg_cy : STD_LOGIC_VECTOR ( 6 downto 0 ); 
+  signal next_state_cmp_eq00001_wg_cy : STD_LOGIC_VECTOR ( 5 downto 0 ); 
   signal next_state_cmp_eq00001_wg_lut : STD_LOGIC_VECTOR ( 6 downto 0 ); 
-  signal port_map_s_count : STD_LOGIC_VECTOR ( 3 downto 0 ); 
   signal s_count : STD_LOGIC_VECTOR ( 31 downto 0 ); 
   signal s_side_light : STD_LOGIC_VECTOR ( 0 downto 0 ); 
 begin
   XST_GND : GND
     port map (
-      G => o_ped_light_1_OBUF_180
+      G => o_ped_light_1_OBUF_163
     );
   XST_VCC : VCC
     port map (
       P => N1
     );
-  next_state_0 : FD
+  next_state_0 : FD_1
     generic map(
       INIT => '1'
     )
     port map (
-      C => o_led_clk_OBUF_170,
+      C => i_clk_BUFGP_116,
       D => next_state_mux0004_6_Q,
       Q => next_state(0)
     );
-  next_state_1 : FD
+  next_state_1 : FD_1
     generic map(
       INIT => '0'
     )
     port map (
-      C => o_led_clk_OBUF_170,
-      D => next_state_mux0004_5_Q_167,
+      C => i_clk_BUFGP_116,
+      D => next_state_mux0004_5_Q_150,
       Q => next_state(1)
     );
-  next_state_3 : FD
+  next_state_3 : FD_1
     generic map(
       INIT => '0'
     )
     port map (
-      C => o_led_clk_OBUF_170,
-      D => next_state_mux0004_3_Q_162,
+      C => i_clk_BUFGP_116,
+      D => next_state_mux0004_3_Q_147,
       Q => next_state(3)
     );
-  next_state_5 : FD
+  next_state_5 : FD_1
     generic map(
       INIT => '0'
     )
     port map (
-      C => o_led_clk_OBUF_170,
-      D => next_state_mux0004_1_Q_159,
+      C => i_clk_BUFGP_116,
+      D => next_state_mux0004_1_Q_143,
       Q => next_state(5)
     );
   s_button_register : LDC
@@ -205,16 +183,16 @@ begin
     port map (
       CLR => current_state(6),
       D => N1,
-      G => i_button_BUFGP_130,
-      Q => s_button_register_196
+      G => i_button_BUFGP_114,
+      Q => s_button_register_170
     );
   current_state_5 : FDC
     generic map(
       INIT => '0'
     )
     port map (
-      C => i_clk_BUFGP_132,
-      CLR => i_reset_IBUF_134,
+      C => i_clk_BUFGP_116,
+      CLR => i_reset_IBUF_118,
       D => next_state(5),
       Q => current_state(5)
     );
@@ -223,8 +201,8 @@ begin
       INIT => '0'
     )
     port map (
-      C => i_clk_BUFGP_132,
-      CLR => i_reset_IBUF_134,
+      C => i_clk_BUFGP_116,
+      CLR => i_reset_IBUF_118,
       D => next_state(4),
       Q => current_state(4)
     );
@@ -233,8 +211,8 @@ begin
       INIT => '0'
     )
     port map (
-      C => i_clk_BUFGP_132,
-      CLR => i_reset_IBUF_134,
+      C => i_clk_BUFGP_116,
+      CLR => i_reset_IBUF_118,
       D => next_state(6),
       Q => current_state(6)
     );
@@ -243,8 +221,8 @@ begin
       INIT => '0'
     )
     port map (
-      C => i_clk_BUFGP_132,
-      CLR => i_reset_IBUF_134,
+      C => i_clk_BUFGP_116,
+      CLR => i_reset_IBUF_118,
       D => next_state(3),
       Q => current_state(3)
     );
@@ -253,8 +231,8 @@ begin
       INIT => '0'
     )
     port map (
-      C => i_clk_BUFGP_132,
-      CLR => i_reset_IBUF_134,
+      C => i_clk_BUFGP_116,
+      CLR => i_reset_IBUF_118,
       D => next_state(2),
       Q => current_state(2)
     );
@@ -263,8 +241,8 @@ begin
       INIT => '0'
     )
     port map (
-      C => i_clk_BUFGP_132,
-      CLR => i_reset_IBUF_134,
+      C => i_clk_BUFGP_116,
+      CLR => i_reset_IBUF_118,
       D => next_state(1),
       Q => current_state(1)
     );
@@ -273,9 +251,9 @@ begin
       INIT => '1'
     )
     port map (
-      C => i_clk_BUFGP_132,
+      C => i_clk_BUFGP_116,
       D => next_state(0),
-      PRE => i_reset_IBUF_134,
+      PRE => i_reset_IBUF_118,
       Q => current_state(0)
     );
   port_map_s_oclk : FDPE
@@ -283,59 +261,19 @@ begin
       INIT => '0'
     )
     port map (
-      C => i_clk_BUFGP_132,
-      CE => port_map_s_count_cmp_eq0000,
+      C => i_clk_BUFGP_116,
+      CE => N1,
       D => port_map_s_oclk_not0001,
-      PRE => i_reset_IBUF_134,
-      Q => port_map_s_oclk_194
-    );
-  port_map_s_count_0 : FDC
-    generic map(
-      INIT => '0'
-    )
-    port map (
-      C => i_clk_BUFGP_132,
-      CLR => i_reset_IBUF_134,
-      D => port_map_Mcount_s_count,
-      Q => port_map_s_count(0)
-    );
-  port_map_s_count_1 : FDC
-    generic map(
-      INIT => '0'
-    )
-    port map (
-      C => i_clk_BUFGP_132,
-      CLR => i_reset_IBUF_134,
-      D => port_map_Mcount_s_count1,
-      Q => port_map_s_count(1)
-    );
-  port_map_s_count_2 : FDC
-    generic map(
-      INIT => '0'
-    )
-    port map (
-      C => i_clk_BUFGP_132,
-      CLR => i_reset_IBUF_134,
-      D => port_map_Mcount_s_count2,
-      Q => port_map_s_count(2)
-    );
-  port_map_s_count_3 : FDC
-    generic map(
-      INIT => '0'
-    )
-    port map (
-      C => i_clk_BUFGP_132,
-      CLR => i_reset_IBUF_134,
-      D => port_map_Mcount_s_count3,
-      Q => port_map_s_count(3)
+      PRE => i_reset_IBUF_118,
+      Q => port_map_s_oclk_168
     );
   s_count_0 : FDC
     generic map(
       INIT => '0'
     )
     port map (
-      C => o_led_clk_OBUF_170,
-      CLR => s_reset_count,
+      C => o_led_clk_OBUF_153,
+      CLR => s_count_or0000,
       D => Result(0),
       Q => s_count(0)
     );
@@ -344,8 +282,8 @@ begin
       INIT => '0'
     )
     port map (
-      C => o_led_clk_OBUF_170,
-      CLR => s_reset_count,
+      C => o_led_clk_OBUF_153,
+      CLR => s_count_or0000,
       D => Result(1),
       Q => s_count(1)
     );
@@ -354,8 +292,8 @@ begin
       INIT => '0'
     )
     port map (
-      C => o_led_clk_OBUF_170,
-      CLR => s_reset_count,
+      C => o_led_clk_OBUF_153,
+      CLR => s_count_or0000,
       D => Result(2),
       Q => s_count(2)
     );
@@ -364,8 +302,8 @@ begin
       INIT => '0'
     )
     port map (
-      C => o_led_clk_OBUF_170,
-      CLR => s_reset_count,
+      C => o_led_clk_OBUF_153,
+      CLR => s_count_or0000,
       D => Result(3),
       Q => s_count(3)
     );
@@ -374,8 +312,8 @@ begin
       INIT => '0'
     )
     port map (
-      C => o_led_clk_OBUF_170,
-      CLR => s_reset_count,
+      C => o_led_clk_OBUF_153,
+      CLR => s_count_or0000,
       D => Result(4),
       Q => s_count(4)
     );
@@ -384,8 +322,8 @@ begin
       INIT => '0'
     )
     port map (
-      C => o_led_clk_OBUF_170,
-      CLR => s_reset_count,
+      C => o_led_clk_OBUF_153,
+      CLR => s_count_or0000,
       D => Result(5),
       Q => s_count(5)
     );
@@ -394,8 +332,8 @@ begin
       INIT => '0'
     )
     port map (
-      C => o_led_clk_OBUF_170,
-      CLR => s_reset_count,
+      C => o_led_clk_OBUF_153,
+      CLR => s_count_or0000,
       D => Result(6),
       Q => s_count(6)
     );
@@ -404,8 +342,8 @@ begin
       INIT => '0'
     )
     port map (
-      C => o_led_clk_OBUF_170,
-      CLR => s_reset_count,
+      C => o_led_clk_OBUF_153,
+      CLR => s_count_or0000,
       D => Result(7),
       Q => s_count(7)
     );
@@ -414,8 +352,8 @@ begin
       INIT => '0'
     )
     port map (
-      C => o_led_clk_OBUF_170,
-      CLR => s_reset_count,
+      C => o_led_clk_OBUF_153,
+      CLR => s_count_or0000,
       D => Result(8),
       Q => s_count(8)
     );
@@ -424,8 +362,8 @@ begin
       INIT => '0'
     )
     port map (
-      C => o_led_clk_OBUF_170,
-      CLR => s_reset_count,
+      C => o_led_clk_OBUF_153,
+      CLR => s_count_or0000,
       D => Result(9),
       Q => s_count(9)
     );
@@ -434,8 +372,8 @@ begin
       INIT => '0'
     )
     port map (
-      C => o_led_clk_OBUF_170,
-      CLR => s_reset_count,
+      C => o_led_clk_OBUF_153,
+      CLR => s_count_or0000,
       D => Result(10),
       Q => s_count(10)
     );
@@ -444,8 +382,8 @@ begin
       INIT => '0'
     )
     port map (
-      C => o_led_clk_OBUF_170,
-      CLR => s_reset_count,
+      C => o_led_clk_OBUF_153,
+      CLR => s_count_or0000,
       D => Result(11),
       Q => s_count(11)
     );
@@ -454,8 +392,8 @@ begin
       INIT => '0'
     )
     port map (
-      C => o_led_clk_OBUF_170,
-      CLR => s_reset_count,
+      C => o_led_clk_OBUF_153,
+      CLR => s_count_or0000,
       D => Result(12),
       Q => s_count(12)
     );
@@ -464,8 +402,8 @@ begin
       INIT => '0'
     )
     port map (
-      C => o_led_clk_OBUF_170,
-      CLR => s_reset_count,
+      C => o_led_clk_OBUF_153,
+      CLR => s_count_or0000,
       D => Result(13),
       Q => s_count(13)
     );
@@ -474,8 +412,8 @@ begin
       INIT => '0'
     )
     port map (
-      C => o_led_clk_OBUF_170,
-      CLR => s_reset_count,
+      C => o_led_clk_OBUF_153,
+      CLR => s_count_or0000,
       D => Result(14),
       Q => s_count(14)
     );
@@ -484,8 +422,8 @@ begin
       INIT => '0'
     )
     port map (
-      C => o_led_clk_OBUF_170,
-      CLR => s_reset_count,
+      C => o_led_clk_OBUF_153,
+      CLR => s_count_or0000,
       D => Result(15),
       Q => s_count(15)
     );
@@ -494,8 +432,8 @@ begin
       INIT => '0'
     )
     port map (
-      C => o_led_clk_OBUF_170,
-      CLR => s_reset_count,
+      C => o_led_clk_OBUF_153,
+      CLR => s_count_or0000,
       D => Result(16),
       Q => s_count(16)
     );
@@ -504,8 +442,8 @@ begin
       INIT => '0'
     )
     port map (
-      C => o_led_clk_OBUF_170,
-      CLR => s_reset_count,
+      C => o_led_clk_OBUF_153,
+      CLR => s_count_or0000,
       D => Result(17),
       Q => s_count(17)
     );
@@ -514,8 +452,8 @@ begin
       INIT => '0'
     )
     port map (
-      C => o_led_clk_OBUF_170,
-      CLR => s_reset_count,
+      C => o_led_clk_OBUF_153,
+      CLR => s_count_or0000,
       D => Result(18),
       Q => s_count(18)
     );
@@ -524,8 +462,8 @@ begin
       INIT => '0'
     )
     port map (
-      C => o_led_clk_OBUF_170,
-      CLR => s_reset_count,
+      C => o_led_clk_OBUF_153,
+      CLR => s_count_or0000,
       D => Result(19),
       Q => s_count(19)
     );
@@ -534,8 +472,8 @@ begin
       INIT => '0'
     )
     port map (
-      C => o_led_clk_OBUF_170,
-      CLR => s_reset_count,
+      C => o_led_clk_OBUF_153,
+      CLR => s_count_or0000,
       D => Result(20),
       Q => s_count(20)
     );
@@ -544,8 +482,8 @@ begin
       INIT => '0'
     )
     port map (
-      C => o_led_clk_OBUF_170,
-      CLR => s_reset_count,
+      C => o_led_clk_OBUF_153,
+      CLR => s_count_or0000,
       D => Result(21),
       Q => s_count(21)
     );
@@ -554,8 +492,8 @@ begin
       INIT => '0'
     )
     port map (
-      C => o_led_clk_OBUF_170,
-      CLR => s_reset_count,
+      C => o_led_clk_OBUF_153,
+      CLR => s_count_or0000,
       D => Result(22),
       Q => s_count(22)
     );
@@ -564,8 +502,8 @@ begin
       INIT => '0'
     )
     port map (
-      C => o_led_clk_OBUF_170,
-      CLR => s_reset_count,
+      C => o_led_clk_OBUF_153,
+      CLR => s_count_or0000,
       D => Result(23),
       Q => s_count(23)
     );
@@ -574,8 +512,8 @@ begin
       INIT => '0'
     )
     port map (
-      C => o_led_clk_OBUF_170,
-      CLR => s_reset_count,
+      C => o_led_clk_OBUF_153,
+      CLR => s_count_or0000,
       D => Result(24),
       Q => s_count(24)
     );
@@ -584,8 +522,8 @@ begin
       INIT => '0'
     )
     port map (
-      C => o_led_clk_OBUF_170,
-      CLR => s_reset_count,
+      C => o_led_clk_OBUF_153,
+      CLR => s_count_or0000,
       D => Result(25),
       Q => s_count(25)
     );
@@ -594,8 +532,8 @@ begin
       INIT => '0'
     )
     port map (
-      C => o_led_clk_OBUF_170,
-      CLR => s_reset_count,
+      C => o_led_clk_OBUF_153,
+      CLR => s_count_or0000,
       D => Result(26),
       Q => s_count(26)
     );
@@ -604,8 +542,8 @@ begin
       INIT => '0'
     )
     port map (
-      C => o_led_clk_OBUF_170,
-      CLR => s_reset_count,
+      C => o_led_clk_OBUF_153,
+      CLR => s_count_or0000,
       D => Result(27),
       Q => s_count(27)
     );
@@ -614,8 +552,8 @@ begin
       INIT => '0'
     )
     port map (
-      C => o_led_clk_OBUF_170,
-      CLR => s_reset_count,
+      C => o_led_clk_OBUF_153,
+      CLR => s_count_or0000,
       D => Result(28),
       Q => s_count(28)
     );
@@ -624,8 +562,8 @@ begin
       INIT => '0'
     )
     port map (
-      C => o_led_clk_OBUF_170,
-      CLR => s_reset_count,
+      C => o_led_clk_OBUF_153,
+      CLR => s_count_or0000,
       D => Result(29),
       Q => s_count(29)
     );
@@ -634,8 +572,8 @@ begin
       INIT => '0'
     )
     port map (
-      C => o_led_clk_OBUF_170,
-      CLR => s_reset_count,
+      C => o_led_clk_OBUF_153,
+      CLR => s_count_or0000,
       D => Result(30),
       Q => s_count(30)
     );
@@ -644,28 +582,28 @@ begin
       INIT => '0'
     )
     port map (
-      C => o_led_clk_OBUF_170,
-      CLR => s_reset_count,
+      C => o_led_clk_OBUF_153,
+      CLR => s_count_or0000,
       D => Result(31),
       Q => s_count(31)
     );
   Mcount_s_count_cy_0_Q : MUXCY
     port map (
-      CI => o_ped_light_1_OBUF_180,
+      CI => o_ped_light_1_OBUF_163,
       DI => N1,
       S => Mcount_s_count_lut(0),
       O => Mcount_s_count_cy(0)
     );
   Mcount_s_count_xor_0_Q : XORCY
     port map (
-      CI => o_ped_light_1_OBUF_180,
+      CI => o_ped_light_1_OBUF_163,
       LI => Mcount_s_count_lut(0),
       O => Result(0)
     );
   Mcount_s_count_cy_1_Q : MUXCY
     port map (
       CI => Mcount_s_count_cy(0),
-      DI => o_ped_light_1_OBUF_180,
+      DI => o_ped_light_1_OBUF_163,
       S => Mcount_s_count_cy_1_rt_22,
       O => Mcount_s_count_cy(1)
     );
@@ -678,7 +616,7 @@ begin
   Mcount_s_count_cy_2_Q : MUXCY
     port map (
       CI => Mcount_s_count_cy(1),
-      DI => o_ped_light_1_OBUF_180,
+      DI => o_ped_light_1_OBUF_163,
       S => Mcount_s_count_cy_2_rt_44,
       O => Mcount_s_count_cy(2)
     );
@@ -691,7 +629,7 @@ begin
   Mcount_s_count_cy_3_Q : MUXCY
     port map (
       CI => Mcount_s_count_cy(2),
-      DI => o_ped_light_1_OBUF_180,
+      DI => o_ped_light_1_OBUF_163,
       S => Mcount_s_count_cy_3_rt_48,
       O => Mcount_s_count_cy(3)
     );
@@ -704,7 +642,7 @@ begin
   Mcount_s_count_cy_4_Q : MUXCY
     port map (
       CI => Mcount_s_count_cy(3),
-      DI => o_ped_light_1_OBUF_180,
+      DI => o_ped_light_1_OBUF_163,
       S => Mcount_s_count_cy_4_rt_50,
       O => Mcount_s_count_cy(4)
     );
@@ -717,7 +655,7 @@ begin
   Mcount_s_count_cy_5_Q : MUXCY
     port map (
       CI => Mcount_s_count_cy(4),
-      DI => o_ped_light_1_OBUF_180,
+      DI => o_ped_light_1_OBUF_163,
       S => Mcount_s_count_cy_5_rt_52,
       O => Mcount_s_count_cy(5)
     );
@@ -730,7 +668,7 @@ begin
   Mcount_s_count_cy_6_Q : MUXCY
     port map (
       CI => Mcount_s_count_cy(5),
-      DI => o_ped_light_1_OBUF_180,
+      DI => o_ped_light_1_OBUF_163,
       S => Mcount_s_count_cy_6_rt_54,
       O => Mcount_s_count_cy(6)
     );
@@ -743,7 +681,7 @@ begin
   Mcount_s_count_cy_7_Q : MUXCY
     port map (
       CI => Mcount_s_count_cy(6),
-      DI => o_ped_light_1_OBUF_180,
+      DI => o_ped_light_1_OBUF_163,
       S => Mcount_s_count_cy_7_rt_56,
       O => Mcount_s_count_cy(7)
     );
@@ -756,7 +694,7 @@ begin
   Mcount_s_count_cy_8_Q : MUXCY
     port map (
       CI => Mcount_s_count_cy(7),
-      DI => o_ped_light_1_OBUF_180,
+      DI => o_ped_light_1_OBUF_163,
       S => Mcount_s_count_cy_8_rt_58,
       O => Mcount_s_count_cy(8)
     );
@@ -769,7 +707,7 @@ begin
   Mcount_s_count_cy_9_Q : MUXCY
     port map (
       CI => Mcount_s_count_cy(8),
-      DI => o_ped_light_1_OBUF_180,
+      DI => o_ped_light_1_OBUF_163,
       S => Mcount_s_count_cy_9_rt_60,
       O => Mcount_s_count_cy(9)
     );
@@ -782,7 +720,7 @@ begin
   Mcount_s_count_cy_10_Q : MUXCY
     port map (
       CI => Mcount_s_count_cy(9),
-      DI => o_ped_light_1_OBUF_180,
+      DI => o_ped_light_1_OBUF_163,
       S => Mcount_s_count_cy_10_rt_2,
       O => Mcount_s_count_cy(10)
     );
@@ -795,7 +733,7 @@ begin
   Mcount_s_count_cy_11_Q : MUXCY
     port map (
       CI => Mcount_s_count_cy(10),
-      DI => o_ped_light_1_OBUF_180,
+      DI => o_ped_light_1_OBUF_163,
       S => Mcount_s_count_cy_11_rt_4,
       O => Mcount_s_count_cy(11)
     );
@@ -808,7 +746,7 @@ begin
   Mcount_s_count_cy_12_Q : MUXCY
     port map (
       CI => Mcount_s_count_cy(11),
-      DI => o_ped_light_1_OBUF_180,
+      DI => o_ped_light_1_OBUF_163,
       S => Mcount_s_count_cy_12_rt_6,
       O => Mcount_s_count_cy(12)
     );
@@ -821,7 +759,7 @@ begin
   Mcount_s_count_cy_13_Q : MUXCY
     port map (
       CI => Mcount_s_count_cy(12),
-      DI => o_ped_light_1_OBUF_180,
+      DI => o_ped_light_1_OBUF_163,
       S => Mcount_s_count_cy_13_rt_8,
       O => Mcount_s_count_cy(13)
     );
@@ -834,7 +772,7 @@ begin
   Mcount_s_count_cy_14_Q : MUXCY
     port map (
       CI => Mcount_s_count_cy(13),
-      DI => o_ped_light_1_OBUF_180,
+      DI => o_ped_light_1_OBUF_163,
       S => Mcount_s_count_cy_14_rt_10,
       O => Mcount_s_count_cy(14)
     );
@@ -847,7 +785,7 @@ begin
   Mcount_s_count_cy_15_Q : MUXCY
     port map (
       CI => Mcount_s_count_cy(14),
-      DI => o_ped_light_1_OBUF_180,
+      DI => o_ped_light_1_OBUF_163,
       S => Mcount_s_count_cy_15_rt_12,
       O => Mcount_s_count_cy(15)
     );
@@ -860,7 +798,7 @@ begin
   Mcount_s_count_cy_16_Q : MUXCY
     port map (
       CI => Mcount_s_count_cy(15),
-      DI => o_ped_light_1_OBUF_180,
+      DI => o_ped_light_1_OBUF_163,
       S => Mcount_s_count_cy_16_rt_14,
       O => Mcount_s_count_cy(16)
     );
@@ -873,7 +811,7 @@ begin
   Mcount_s_count_cy_17_Q : MUXCY
     port map (
       CI => Mcount_s_count_cy(16),
-      DI => o_ped_light_1_OBUF_180,
+      DI => o_ped_light_1_OBUF_163,
       S => Mcount_s_count_cy_17_rt_16,
       O => Mcount_s_count_cy(17)
     );
@@ -886,7 +824,7 @@ begin
   Mcount_s_count_cy_18_Q : MUXCY
     port map (
       CI => Mcount_s_count_cy(17),
-      DI => o_ped_light_1_OBUF_180,
+      DI => o_ped_light_1_OBUF_163,
       S => Mcount_s_count_cy_18_rt_18,
       O => Mcount_s_count_cy(18)
     );
@@ -899,7 +837,7 @@ begin
   Mcount_s_count_cy_19_Q : MUXCY
     port map (
       CI => Mcount_s_count_cy(18),
-      DI => o_ped_light_1_OBUF_180,
+      DI => o_ped_light_1_OBUF_163,
       S => Mcount_s_count_cy_19_rt_20,
       O => Mcount_s_count_cy(19)
     );
@@ -912,7 +850,7 @@ begin
   Mcount_s_count_cy_20_Q : MUXCY
     port map (
       CI => Mcount_s_count_cy(19),
-      DI => o_ped_light_1_OBUF_180,
+      DI => o_ped_light_1_OBUF_163,
       S => Mcount_s_count_cy_20_rt_24,
       O => Mcount_s_count_cy(20)
     );
@@ -925,7 +863,7 @@ begin
   Mcount_s_count_cy_21_Q : MUXCY
     port map (
       CI => Mcount_s_count_cy(20),
-      DI => o_ped_light_1_OBUF_180,
+      DI => o_ped_light_1_OBUF_163,
       S => Mcount_s_count_cy_21_rt_26,
       O => Mcount_s_count_cy(21)
     );
@@ -938,7 +876,7 @@ begin
   Mcount_s_count_cy_22_Q : MUXCY
     port map (
       CI => Mcount_s_count_cy(21),
-      DI => o_ped_light_1_OBUF_180,
+      DI => o_ped_light_1_OBUF_163,
       S => Mcount_s_count_cy_22_rt_28,
       O => Mcount_s_count_cy(22)
     );
@@ -951,7 +889,7 @@ begin
   Mcount_s_count_cy_23_Q : MUXCY
     port map (
       CI => Mcount_s_count_cy(22),
-      DI => o_ped_light_1_OBUF_180,
+      DI => o_ped_light_1_OBUF_163,
       S => Mcount_s_count_cy_23_rt_30,
       O => Mcount_s_count_cy(23)
     );
@@ -964,7 +902,7 @@ begin
   Mcount_s_count_cy_24_Q : MUXCY
     port map (
       CI => Mcount_s_count_cy(23),
-      DI => o_ped_light_1_OBUF_180,
+      DI => o_ped_light_1_OBUF_163,
       S => Mcount_s_count_cy_24_rt_32,
       O => Mcount_s_count_cy(24)
     );
@@ -977,7 +915,7 @@ begin
   Mcount_s_count_cy_25_Q : MUXCY
     port map (
       CI => Mcount_s_count_cy(24),
-      DI => o_ped_light_1_OBUF_180,
+      DI => o_ped_light_1_OBUF_163,
       S => Mcount_s_count_cy_25_rt_34,
       O => Mcount_s_count_cy(25)
     );
@@ -990,7 +928,7 @@ begin
   Mcount_s_count_cy_26_Q : MUXCY
     port map (
       CI => Mcount_s_count_cy(25),
-      DI => o_ped_light_1_OBUF_180,
+      DI => o_ped_light_1_OBUF_163,
       S => Mcount_s_count_cy_26_rt_36,
       O => Mcount_s_count_cy(26)
     );
@@ -1003,7 +941,7 @@ begin
   Mcount_s_count_cy_27_Q : MUXCY
     port map (
       CI => Mcount_s_count_cy(26),
-      DI => o_ped_light_1_OBUF_180,
+      DI => o_ped_light_1_OBUF_163,
       S => Mcount_s_count_cy_27_rt_38,
       O => Mcount_s_count_cy(27)
     );
@@ -1016,7 +954,7 @@ begin
   Mcount_s_count_cy_28_Q : MUXCY
     port map (
       CI => Mcount_s_count_cy(27),
-      DI => o_ped_light_1_OBUF_180,
+      DI => o_ped_light_1_OBUF_163,
       S => Mcount_s_count_cy_28_rt_40,
       O => Mcount_s_count_cy(28)
     );
@@ -1029,7 +967,7 @@ begin
   Mcount_s_count_cy_29_Q : MUXCY
     port map (
       CI => Mcount_s_count_cy(28),
-      DI => o_ped_light_1_OBUF_180,
+      DI => o_ped_light_1_OBUF_163,
       S => Mcount_s_count_cy_29_rt_42,
       O => Mcount_s_count_cy(29)
     );
@@ -1042,7 +980,7 @@ begin
   Mcount_s_count_cy_30_Q : MUXCY
     port map (
       CI => Mcount_s_count_cy(29),
-      DI => o_ped_light_1_OBUF_180,
+      DI => o_ped_light_1_OBUF_163,
       S => Mcount_s_count_cy_30_rt_46,
       O => Mcount_s_count_cy(30)
     );
@@ -1060,8 +998,8 @@ begin
     );
   port_map_clk_buffer : BUFG
     port map (
-      I => port_map_s_oclk_194,
-      O => o_led_clk_OBUF_170
+      I => port_map_s_oclk_168,
+      O => o_led_clk_OBUF_153
     );
   next_state_cmp_eq00001_wg_lut_0_Q : LUT4
     generic map(
@@ -1077,7 +1015,7 @@ begin
   next_state_cmp_eq00001_wg_cy_0_Q : MUXCY
     port map (
       CI => N1,
-      DI => o_ped_light_1_OBUF_180,
+      DI => o_ped_light_1_OBUF_163,
       S => next_state_cmp_eq00001_wg_lut(0),
       O => next_state_cmp_eq00001_wg_cy(0)
     );
@@ -1095,7 +1033,7 @@ begin
   next_state_cmp_eq00001_wg_cy_1_Q : MUXCY
     port map (
       CI => next_state_cmp_eq00001_wg_cy(0),
-      DI => o_ped_light_1_OBUF_180,
+      DI => o_ped_light_1_OBUF_163,
       S => next_state_cmp_eq00001_wg_lut(1),
       O => next_state_cmp_eq00001_wg_cy(1)
     );
@@ -1113,7 +1051,7 @@ begin
   next_state_cmp_eq00001_wg_cy_2_Q : MUXCY
     port map (
       CI => next_state_cmp_eq00001_wg_cy(1),
-      DI => o_ped_light_1_OBUF_180,
+      DI => o_ped_light_1_OBUF_163,
       S => next_state_cmp_eq00001_wg_lut(2),
       O => next_state_cmp_eq00001_wg_cy(2)
     );
@@ -1123,7 +1061,7 @@ begin
     )
     port map (
       I0 => s_count(14),
-      I1 => s_count(12),
+      I1 => s_count(13),
       I2 => s_count(27),
       I3 => s_count(10),
       O => next_state_cmp_eq00001_wg_lut(3)
@@ -1131,7 +1069,7 @@ begin
   next_state_cmp_eq00001_wg_cy_3_Q : MUXCY
     port map (
       CI => next_state_cmp_eq00001_wg_cy(2),
-      DI => o_ped_light_1_OBUF_180,
+      DI => o_ped_light_1_OBUF_163,
       S => next_state_cmp_eq00001_wg_lut(3),
       O => next_state_cmp_eq00001_wg_cy(3)
     );
@@ -1140,7 +1078,7 @@ begin
       INIT => X"0001"
     )
     port map (
-      I0 => s_count(13),
+      I0 => s_count(12),
       I1 => s_count(11),
       I2 => s_count(28),
       I3 => s_count(9),
@@ -1149,7 +1087,7 @@ begin
   next_state_cmp_eq00001_wg_cy_4_Q : MUXCY
     port map (
       CI => next_state_cmp_eq00001_wg_cy(3),
-      DI => o_ped_light_1_OBUF_180,
+      DI => o_ped_light_1_OBUF_163,
       S => next_state_cmp_eq00001_wg_lut(4),
       O => next_state_cmp_eq00001_wg_cy(4)
     );
@@ -1167,7 +1105,7 @@ begin
   next_state_cmp_eq00001_wg_cy_5_Q : MUXCY
     port map (
       CI => next_state_cmp_eq00001_wg_cy(4),
-      DI => o_ped_light_1_OBUF_180,
+      DI => o_ped_light_1_OBUF_163,
       S => next_state_cmp_eq00001_wg_lut(5),
       O => next_state_cmp_eq00001_wg_cy(5)
     );
@@ -1185,22 +1123,52 @@ begin
   next_state_cmp_eq00001_wg_cy_6_Q : MUXCY
     port map (
       CI => next_state_cmp_eq00001_wg_cy(5),
-      DI => o_ped_light_1_OBUF_180,
+      DI => o_ped_light_1_OBUF_163,
       S => next_state_cmp_eq00001_wg_lut(6),
-      O => next_state_cmp_eq00001_wg_cy(6)
+      O => N0
     );
-  s_reset_count76 : LUT4
+  next_state_cmp_eq00031 : LUT3
     generic map(
-      INIT => X"6FF6"
+      INIT => X"02"
     )
     port map (
-      I0 => next_state(2),
-      I1 => current_state(2),
-      I2 => current_state(0),
-      I3 => next_state(0),
-      O => s_reset_count76_232
+      I0 => N11,
+      I1 => s_count(3),
+      I2 => s_count(0),
+      O => next_state_cmp_eq0003
     );
-  s_reset_count103 : LUT4
+  next_state_cmp_eq000021 : LUT3
+    generic map(
+      INIT => X"08"
+    )
+    port map (
+      I0 => N0,
+      I1 => s_count(1),
+      I2 => s_count(2),
+      O => N11
+    );
+  next_state_cmp_eq000211 : LUT4
+    generic map(
+      INIT => X"0020"
+    )
+    port map (
+      I0 => s_count(2),
+      I1 => s_count(3),
+      I2 => N0,
+      I3 => s_count(1),
+      O => N2
+    );
+  s_count_or000040 : LUT3
+    generic map(
+      INIT => X"F6"
+    )
+    port map (
+      I0 => current_state(0),
+      I1 => next_state(0),
+      I2 => i_reset_IBUF_118,
+      O => s_count_or000040_205
+    );
+  s_count_or000080 : LUT4
     generic map(
       INIT => X"6FF6"
     )
@@ -1209,16 +1177,18 @@ begin
       I1 => next_state(6),
       I2 => current_state(5),
       I3 => next_state(5),
-      O => s_reset_count103_230
+      O => s_count_or000080_206
     );
-  s_reset_count104 : LUT2
+  s_count_or0000107 : LUT4
     generic map(
-      INIT => X"E"
+      INIT => X"6FF6"
     )
     port map (
-      I0 => s_reset_count76_232,
-      I1 => s_reset_count103_230,
-      O => s_reset_count104_231
+      I0 => current_state(4),
+      I1 => next_state(4),
+      I2 => current_state(3),
+      I3 => next_state(3),
+      O => s_count_or0000107_204
     );
   s_main_light_2_1 : LUT2
     generic map(
@@ -1227,7 +1197,7 @@ begin
     port map (
       I0 => current_state(1),
       I1 => current_state(3),
-      O => o_main_light_2_OBUF_175
+      O => o_main_light_2_OBUF_158
     );
   s_main_light_0_1 : LUT4
     generic map(
@@ -1238,170 +1208,170 @@ begin
       I1 => current_state(5),
       I2 => current_state(4),
       I3 => current_state(0),
-      O => o_main_light_0_OBUF_174
-    );
-  port_map_Mcount_s_count_xor_1_11 : LUT2
-    generic map(
-      INIT => X"6"
-    )
-    port map (
-      I0 => port_map_s_count(0),
-      I1 => port_map_s_count(1),
-      O => port_map_Mcount_s_count1
-    );
-  port_map_Mcount_s_count_xor_2_11 : LUT3
-    generic map(
-      INIT => X"6A"
-    )
-    port map (
-      I0 => port_map_s_count(2),
-      I1 => port_map_s_count(1),
-      I2 => port_map_s_count(0),
-      O => port_map_Mcount_s_count2
-    );
-  port_map_Mcount_s_count_xor_3_11 : LUT4
-    generic map(
-      INIT => X"6AAA"
-    )
-    port map (
-      I0 => port_map_s_count(3),
-      I1 => port_map_s_count(1),
-      I2 => port_map_s_count(0),
-      I3 => port_map_s_count(2),
-      O => port_map_Mcount_s_count3
+      O => o_main_light_0_OBUF_157
     );
   s_ped_light_0_SW0 : LUT3
     generic map(
       INIT => X"FE"
     )
     port map (
-      I0 => current_state(3),
-      I1 => current_state(1),
-      I2 => current_state(0),
-      O => N2
+      I0 => current_state(2),
+      I1 => current_state(3),
+      I2 => current_state(1),
+      O => N5
     );
   s_ped_light_0_Q : LUT4
     generic map(
       INIT => X"FFFE"
     )
     port map (
-      I0 => current_state(4),
-      I1 => current_state(5),
-      I2 => current_state(2),
-      I3 => N2,
-      O => o_ped_light_0_OBUF_179
+      I0 => current_state(5),
+      I1 => current_state(0),
+      I2 => current_state(4),
+      I3 => N5,
+      O => o_ped_light_0_OBUF_162
     );
-  port_map_s_count_cmp_eq00001 : LUT4
+  next_state_mux0004_6_1 : LUT4
     generic map(
-      INIT => X"8000"
+      INIT => X"AA2A"
     )
     port map (
-      I0 => port_map_s_count(0),
-      I1 => port_map_s_count(3),
-      I2 => port_map_s_count(2),
-      I3 => port_map_s_count(1),
-      O => port_map_s_count_cmp_eq0000
+      I0 => current_state(0),
+      I1 => N11,
+      I2 => s_count(0),
+      I3 => s_count(3),
+      O => next_state_mux0004_6_Q
     );
-  next_state_mux0004_4_14 : LUT4
+  next_state_mux0004_0_SW0 : LUT3
     generic map(
-      INIT => X"0200"
+      INIT => X"B0"
+    )
+    port map (
+      I0 => s_count(0),
+      I1 => N2,
+      I2 => current_state(6),
+      O => N7
+    );
+  next_state_mux0004_5_Q : LUT4
+    generic map(
+      INIT => X"8A8F"
     )
     port map (
       I0 => current_state(1),
-      I1 => i_sensor_IBUF_136,
-      I2 => s_count(0),
-      I3 => s_count(3),
-      O => next_state_mux0004_4_14_164
+      I1 => N14,
+      I2 => s_count(3),
+      I3 => N13,
+      O => next_state_mux0004_5_Q_150
+    );
+  next_state_mux0004_4_2 : LUT3
+    generic map(
+      INIT => X"80"
+    )
+    port map (
+      I0 => N2,
+      I1 => s_count(0),
+      I2 => current_state(3),
+      O => next_state_mux0004_4_2_148
     );
   i_sensor_IBUF : IBUF
     port map (
       I => i_sensor,
-      O => i_sensor_IBUF_136
+      O => i_sensor_IBUF_120
     );
   i_reset_IBUF : IBUF
     port map (
       I => i_reset,
-      O => i_reset_IBUF_134
+      O => i_reset_IBUF_118
     );
   o_led_clk_OBUF : OBUF
     port map (
-      I => o_led_clk_OBUF_170,
+      I => o_led_clk_OBUF_153,
       O => o_led_clk
     );
   o_ped_light_2_OBUF : OBUF
     port map (
-      I => current_state_6_1_128,
+      I => current_state(6),
       O => o_ped_light(2)
     );
   o_ped_light_1_OBUF : OBUF
     port map (
-      I => o_ped_light_1_OBUF_180,
+      I => o_ped_light_1_OBUF_163,
       O => o_ped_light(1)
     );
   o_ped_light_0_OBUF : OBUF
     port map (
-      I => o_ped_light_0_OBUF_179,
+      I => o_ped_light_0_OBUF_162,
       O => o_ped_light(0)
     );
   o_main_light_2_OBUF : OBUF
     port map (
-      I => o_main_light_2_OBUF_175,
+      I => o_main_light_2_OBUF_158,
       O => o_main_light(2)
     );
   o_main_light_1_OBUF : OBUF
     port map (
-      I => current_state_2_1_121,
+      I => current_state(2),
       O => o_main_light(1)
     );
   o_main_light_0_OBUF : OBUF
     port map (
-      I => o_main_light_0_OBUF_174,
+      I => o_main_light_0_OBUF_157,
       O => o_main_light(0)
     );
   o_side_light_2_OBUF : OBUF
     port map (
-      I => current_state_4_1_124,
+      I => current_state(4),
       O => o_side_light(2)
     );
   o_side_light_1_OBUF : OBUF
     port map (
-      I => current_state_5_1_126,
+      I => current_state(5),
       O => o_side_light(1)
     );
   o_side_light_0_OBUF : OBUF
     port map (
-      I => o_side_light_0_OBUF_184,
+      I => o_side_light_0_OBUF_167,
       O => o_side_light(0)
     );
-  next_state_2 : FDS
+  next_state_2 : FDS_1
     generic map(
       INIT => '0'
     )
     port map (
-      C => o_led_clk_OBUF_170,
-      D => next_state_mux0004_4_35,
-      S => next_state_mux0004_4_23_165,
+      C => i_clk_BUFGP_116,
+      D => next_state_mux0004_4_30,
+      S => next_state_mux0004_4_2_148,
       Q => next_state(2)
     );
-  next_state_4 : FDS
+  next_state_4 : FDS_1
     generic map(
       INIT => '0'
     )
     port map (
-      C => o_led_clk_OBUF_170,
+      C => i_clk_BUFGP_116,
       D => next_state_mux0004_2_36,
-      S => next_state_mux0004_2_12_160,
+      S => next_state_mux0004_2_9_146,
       Q => next_state(4)
     );
-  next_state_6 : FDS
+  next_state_6 : FDS_1
     generic map(
       INIT => '0'
     )
     port map (
-      C => o_led_clk_OBUF_170,
-      D => next_state_mux0004_0_1_158,
-      S => N12,
+      C => i_clk_BUFGP_116,
+      D => next_state_mux0004_0_1_142,
+      S => N7,
       Q => next_state(6)
+    );
+  next_state_mux0004_0_1 : LUT3
+    generic map(
+      INIT => X"80"
+    )
+    port map (
+      I0 => current_state(2),
+      I1 => s_button_register_170,
+      I2 => next_state_cmp_eq0003,
+      O => next_state_mux0004_0_1_142
     );
   Mcount_s_count_cy_1_rt : LUT1
     generic map(
@@ -1651,217 +1621,103 @@ begin
       I0 => s_count(31),
       O => Mcount_s_count_xor_31_rt_62
     );
-  next_state_mux0004_1_SW1 : LUT3
+  next_state_mux0004_2_361 : LUT4
     generic map(
-      INIT => X"C8"
+      INIT => X"FF40"
     )
     port map (
-      I0 => current_state(5),
-      I1 => s_count(3),
-      I2 => current_state(4),
-      O => N14
+      I0 => s_button_register_170,
+      I1 => next_state_cmp_eq0003,
+      I2 => current_state(2),
+      I3 => next_state_mux0004_2_33_144,
+      O => next_state_mux0004_2_36
     );
-  next_state_mux0004_2_12 : LUT4
+  next_state_mux0004_2_9 : LUT4
     generic map(
-      INIT => X"A8AA"
-    )
-    port map (
-      I0 => current_state(4),
-      I1 => s_count(0),
-      I2 => N22,
-      I3 => next_state_cmp_eq00001_wg_cy(6),
-      O => next_state_mux0004_2_12_160
-    );
-  next_state_mux0004_0_SW0 : LUT4
-    generic map(
-      INIT => X"1000"
+      INIT => X"BF00"
     )
     port map (
       I0 => s_count(0),
-      I1 => N24,
-      I2 => s_count(1),
-      I3 => next_state_cmp_eq00001_wg_cy(6),
-      O => N12
-    );
-  next_state_mux0004_4_23_SW1 : LUT4
-    generic map(
-      INIT => X"D9DD"
-    )
-    port map (
-      I0 => s_count(1),
-      I1 => s_count(2),
+      I1 => N11,
       I2 => s_count(3),
-      I3 => N51,
-      O => N27
+      I3 => current_state(4),
+      O => next_state_mux0004_2_9_146
     );
-  next_state_mux0004_4_23 : LUT4
+  s_count_or0000122_SW0 : LUT4
     generic map(
-      INIT => X"082A"
-    )
-    port map (
-      I0 => next_state_cmp_eq00001_wg_cy(6),
-      I1 => next_state_mux0004_4_14_164,
-      I2 => N27,
-      I3 => N26,
-      O => next_state_mux0004_4_23_165
-    );
-  next_state_mux0004_2_361_SW2 : LUT3
-    generic map(
-      INIT => X"FE"
-    )
-    port map (
-      I0 => s_count(2),
-      I1 => s_count(0),
-      I2 => N29,
-      O => N32
-    );
-  next_state_mux0004_2_361 : LUT4
-    generic map(
-      INIT => X"10B0"
-    )
-    port map (
-      I0 => s_count(1),
-      I1 => N31,
-      I2 => next_state_cmp_eq00001_wg_cy(6),
-      I3 => N32,
-      O => next_state_mux0004_2_36
-    );
-  next_state_mux0004_0_1 : LUT4
-    generic map(
-      INIT => X"AA8A"
-    )
-    port map (
-      I0 => current_state(6),
-      I1 => s_count(0),
-      I2 => next_state_cmp_eq00001_wg_cy(6),
-      I3 => N34,
-      O => next_state_mux0004_0_1_158
-    );
-  next_state_mux0004_3_SW0 : LUT3
-    generic map(
-      INIT => X"02"
-    )
-    port map (
-      I0 => s_count(1),
-      I1 => s_count(2),
-      I2 => N81,
-      O => N36
-    );
-  next_state_mux0004_3_Q : LUT4
-    generic map(
-      INIT => X"DA8A"
-    )
-    port map (
-      I0 => current_state(3),
-      I1 => N37,
-      I2 => next_state_cmp_eq00001_wg_cy(6),
-      I3 => N36,
-      O => next_state_mux0004_3_Q_162
-    );
-  next_state_mux0004_6_1 : LUT4
-    generic map(
-      INIT => X"AA2A"
-    )
-    port map (
-      I0 => current_state(0),
-      I1 => next_state_cmp_eq00001_wg_cy(6),
-      I2 => s_count(0),
-      I3 => N52,
-      O => next_state_mux0004_6_Q
-    );
-  next_state_mux0004_5_Q : LUT4
-    generic map(
-      INIT => X"EC4C"
-    )
-    port map (
-      I0 => next_state_cmp_eq00001_wg_cy(6),
-      I1 => current_state(1),
-      I2 => s_count(1),
-      I3 => N41,
-      O => next_state_mux0004_5_Q_167
-    );
-  next_state_mux0004_4_351 : LUT4
-    generic map(
-      INIT => X"AA8A"
+      INIT => X"FFF6"
     )
     port map (
       I0 => current_state(2),
-      I1 => s_count(0),
-      I2 => next_state_cmp_eq00001_wg_cy(6),
-      I3 => N39,
-      O => next_state_mux0004_4_35
+      I1 => next_state(2),
+      I2 => s_count_or000040_205,
+      I3 => s_count_or000080_206,
+      O => N19
     );
-  next_state_mux0004_1_Q : LUT4
-    generic map(
-      INIT => X"FD20"
-    )
-    port map (
-      I0 => next_state_cmp_eq00001_wg_cy(6),
-      I1 => N45,
-      I2 => N14,
-      I3 => current_state(5),
-      O => next_state_mux0004_1_Q_159
-    );
-  s_reset_count118_SW0 : LUT4
-    generic map(
-      INIT => X"6FF6"
-    )
-    port map (
-      I0 => next_state(4),
-      I1 => current_state(4),
-      I2 => next_state(3),
-      I3 => current_state(3),
-      O => N47
-    );
-  s_reset_count118 : LUT4
+  s_count_or0000122 : LUT4
     generic map(
       INIT => X"FFF6"
     )
     port map (
       I0 => current_state(1),
       I1 => next_state(1),
-      I2 => s_reset_count104_231,
-      I3 => N47,
-      O => s_reset_count
+      I2 => s_count_or0000107_204,
+      I3 => N19,
+      O => s_count_or0000
     );
-  next_state_cmp_eq000021_SW4 : MUXF5
-    port map (
-      I0 => N49,
-      I1 => N50,
-      S => s_count(0),
-      O => N41
-    );
-  next_state_cmp_eq000021_SW4_F : LUT4
+  next_state_mux0004_3_Q : LUT4
     generic map(
-      INIT => X"F504"
+      INIT => X"2A3B"
     )
     port map (
-      I0 => s_count(3),
-      I1 => current_state(5),
-      I2 => s_count(2),
-      I3 => current_state(1),
-      O => N49
+      I0 => current_state(3),
+      I1 => s_count(0),
+      I2 => N2,
+      I3 => N21,
+      O => next_state_mux0004_3_Q_147
     );
-  next_state_cmp_eq000021_SW4_G : LUT4
+  next_state_mux0004_5_SW1 : LUT4
     generic map(
-      INIT => X"FF04"
+      INIT => X"FDFF"
     )
     port map (
-      I0 => s_count(3),
-      I1 => current_state(0),
+      I0 => N0,
+      I1 => s_count(0),
       I2 => s_count(2),
-      I3 => current_state(1),
-      O => N50
+      I3 => s_count(1),
+      O => N14
+    );
+  next_state_mux0004_4_301 : LUT4
+    generic map(
+      INIT => X"F4B0"
+    )
+    port map (
+      I0 => s_count(0),
+      I1 => N11,
+      I2 => current_state(2),
+      I3 => N25,
+      O => next_state_mux0004_4_30
+    );
+  next_state_mux0004_1_Q : LUT4
+    generic map(
+      INIT => X"B8A8"
+    )
+    port map (
+      I0 => current_state(5),
+      I1 => N14,
+      I2 => s_count(3),
+      I3 => current_state(4),
+      O => next_state_mux0004_1_Q_143
     );
   i_clk_BUFGP : BUFGP
     port map (
       I => i_clk,
-      O => i_clk_BUFGP_132
+      O => i_clk_BUFGP_116
     );
   i_button_BUFGP : BUFGP
     port map (
       I => i_button,
-      O => i_button_BUFGP_130
+      O => i_button_BUFGP_114
     );
   Mcount_s_count_lut_0_INV_0 : INV
     port map (
@@ -1870,23 +1726,18 @@ begin
     );
   port_map_s_oclk_not00011_INV_0 : INV
     port map (
-      I => port_map_s_oclk_194,
+      I => port_map_s_oclk_168,
       O => port_map_s_oclk_not0001
-    );
-  port_map_Mcount_s_count_xor_0_11_INV_0 : INV
-    port map (
-      I => port_map_s_count(0),
-      O => port_map_Mcount_s_count
     );
   s_side_light_0_1 : LUT4
     generic map(
       INIT => X"FFFE"
     )
     port map (
-      I0 => current_state(2),
-      I1 => current_state(3),
-      I2 => current_state(1),
-      I3 => current_state(0),
+      I0 => current_state(0),
+      I1 => current_state(2),
+      I2 => current_state(3),
+      I3 => current_state(1),
       O => s_side_light(0)
     );
   s_side_light_0_f5 : MUXF5
@@ -1894,163 +1745,50 @@ begin
       I0 => s_side_light(0),
       I1 => N1,
       S => current_state(6),
-      O => o_side_light_0_OBUF_184
+      O => o_side_light_0_OBUF_167
     );
-  next_state_mux0004_3_SW1 : LUT4_L
+  next_state_mux0004_2_33 : LUT3_L
     generic map(
-      INIT => X"F7FF"
-    )
-    port map (
-      I0 => i_sensor_IBUF_136,
-      I1 => current_state(1),
-      I2 => s_count(0),
-      I3 => s_count(3),
-      LO => N81
-    );
-  next_state_mux0004_4_0 : LUT2_D
-    generic map(
-      INIT => X"8"
-    )
-    port map (
-      I0 => current_state(3),
-      I1 => s_count(0),
-      LO => N51,
-      O => next_state_mux0004_4_0_163
-    );
-  next_state_cmp_eq000021_SW0 : LUT3_L
-    generic map(
-      INIT => X"F7"
-    )
-    port map (
-      I0 => s_count(1),
-      I1 => s_count(3),
-      I2 => s_count(2),
-      LO => N22
-    );
-  next_state_mux0004_4_23_SW0 : LUT4_L
-    generic map(
-      INIT => X"FBFF"
-    )
-    port map (
-      I0 => s_count(1),
-      I1 => s_count(2),
-      I2 => s_count(3),
-      I3 => next_state_mux0004_4_0_163,
-      LO => N26
-    );
-  next_state_cmp_eq000021_SW2 : LUT3_L
-    generic map(
-      INIT => X"FB"
-    )
-    port map (
-      I0 => s_button_register_196,
-      I1 => current_state(2),
-      I2 => s_count(3),
-      LO => N29
-    );
-  next_state_mux0004_2_361_SW1 : LUT4_L
-    generic map(
-      INIT => X"EFFF"
-    )
-    port map (
-      I0 => s_count(3),
-      I1 => s_count(0),
-      I2 => s_count(2),
-      I3 => current_state(6),
-      LO => N31
-    );
-  next_state_cmp_eq000211_SW0 : LUT3_L
-    generic map(
-      INIT => X"FB"
-    )
-    port map (
-      I0 => s_count(1),
-      I1 => s_count(2),
-      I2 => s_count(3),
-      LO => N34
-    );
-  next_state_mux0004_3_SW3 : LUT4_L
-    generic map(
-      INIT => X"EFFF"
-    )
-    port map (
-      I0 => s_count(1),
-      I1 => s_count(3),
-      I2 => s_count(0),
-      I3 => s_count(2),
-      LO => N37
-    );
-  next_state_cmp_eq000021_SW3 : LUT3_D
-    generic map(
-      INIT => X"FB"
-    )
-    port map (
-      I0 => s_count(2),
-      I1 => s_count(1),
-      I2 => s_count(3),
-      LO => N52,
-      O => N39
-    );
-  next_state_cmp_eq000021_SW6 : LUT3_L
-    generic map(
-      INIT => X"FB"
+      INIT => X"40"
     )
     port map (
       I0 => s_count(0),
-      I1 => s_count(1),
-      I2 => s_count(2),
-      LO => N45
+      I1 => N2,
+      I2 => current_state(6),
+      LO => next_state_mux0004_2_33_144
     );
-  next_state_cmp_eq000021_SW1 : LUT4_L
+  next_state_mux0004_5_SW0 : LUT4_L
     generic map(
-      INIT => X"FFF7"
+      INIT => X"5D7F"
     )
     port map (
-      I0 => current_state(2),
-      I1 => s_button_register_196,
-      I2 => s_count(2),
-      I3 => s_count(3),
-      LO => N24
+      I0 => N11,
+      I1 => s_count(0),
+      I2 => current_state(0),
+      I3 => current_state(5),
+      LO => N13
     );
-  current_state_6_1 : FDC
+  next_state_mux0004_3_SW0 : LUT4_L
     generic map(
-      INIT => '0'
+      INIT => X"7FFF"
     )
     port map (
-      C => i_clk_BUFGP_132,
-      CLR => i_reset_IBUF_134,
-      D => next_state(6),
-      Q => current_state_6_1_128
+      I0 => s_count(3),
+      I1 => i_sensor_IBUF_120,
+      I2 => N11,
+      I3 => current_state(1),
+      LO => N21
     );
-  current_state_2_1 : FDC
+  next_state_mux0004_4_301_SW0 : LUT4_L
     generic map(
-      INIT => '0'
+      INIT => X"CC40"
     )
     port map (
-      C => i_clk_BUFGP_132,
-      CLR => i_reset_IBUF_134,
-      D => next_state(2),
-      Q => current_state_2_1_121
-    );
-  current_state_4_1 : FDC
-    generic map(
-      INIT => '0'
-    )
-    port map (
-      C => i_clk_BUFGP_132,
-      CLR => i_reset_IBUF_134,
-      D => next_state(4),
-      Q => current_state_4_1_124
-    );
-  current_state_5_1 : FDC
-    generic map(
-      INIT => '0'
-    )
-    port map (
-      C => i_clk_BUFGP_132,
-      CLR => i_reset_IBUF_134,
-      D => next_state(5),
-      Q => current_state_5_1_126
+      I0 => i_sensor_IBUF_120,
+      I1 => s_count(3),
+      I2 => current_state(1),
+      I3 => current_state(2),
+      LO => N25
     );
 
 end Structure;

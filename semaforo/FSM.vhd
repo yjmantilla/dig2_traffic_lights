@@ -16,7 +16,12 @@ entity FSM is
 	 time_yellow : integer := 2;
 	 time_walk : integer := 4;
 	 time_ext : integer := 5;
-	 time_reset : integer := 3);
+	 time_reset : integer := 3;
+	-- Use one-hot notation for lights: GYR
+	 RED : STD_LOGIC_VECTOR := "001";
+	 YELLOW : STD_LOGIC_VECTOR := "010";
+	 GREEN: STD_LOGIC_VECTOR := "100"
+	 );
 	 
 	 Port ( i_clk : in  STD_LOGIC; --relog de 1hz
             i_reset : in  STD_LOGIC;
@@ -54,14 +59,9 @@ architecture Behavioral of FSM is
 	signal next_state : state_type := RS;
 		
 	-- Internal signals
-	-- Use one-hot notation for lights: GYR
-	-- 001 RED
-	-- 010 YELLOW
-	-- 100 GREEN
-
-	signal s_main_light : STD_LOGIC_VECTOR (2 downto 0) := (others => '0');
-	signal s_side_light : STD_LOGIC_VECTOR (2 downto 0) := (others => '0');
-	signal s_ped_light : STD_LOGIC_VECTOR (2 downto 0) := "001";
+	signal s_main_light : STD_LOGIC_VECTOR (2 downto 0) := RED; --(others => '0');
+	signal s_side_light : STD_LOGIC_VECTOR (2 downto 0) := RED;
+	signal s_ped_light : STD_LOGIC_VECTOR (2 downto 0) := RED;
 	signal s_count : integer := 0;-- contador del tiempo 
 	signal s_button_register: STD_LOGIC := '0';--button register
 	signal s_clk1hz : STD_LOGIC := '0'; -- clock de 1hz
@@ -70,7 +70,7 @@ architecture Behavioral of FSM is
 	-- Frequency Divider
 	
 	component freq_div
-		Generic( MAX_COUNT : INTEGER := 1);--25000000);
+		Generic( MAX_COUNT : INTEGER := 1);--25000000 for 1 second);
 		Port
 		(
 			i_clk : in STD_LOGIC;
@@ -104,14 +104,22 @@ begin
 	end if;
 end process;
 
-p_counter: process(s_clk1hz,s_count,s_reset_count)
+p_counter: process(s_clk1hz,s_count,s_reset_count,i_reset)
 begin
-	if (RISING_EDGE(s_clk1hz)) then
+
+
+	if (i_reset = '1') then
+		s_count <= 0;
+
+	elsif (RISING_EDGE(s_clk1hz)) then
 			s_count <= s_count + 1;
 	end if;	
+
+	-- the if below had to be in the end of the process otherwise non-synthetizable
 	if (s_reset_count = '1') then
 		s_count <= 0;
 	end if;
+	
 end process;
 
 
@@ -126,10 +134,13 @@ p_button: process(i_button,current_state)
 		end if;
 	end process;
 
-	
-p_fsm_states : process(current_state,s_count,s_button_register,i_sensor,s_clk1hz)
-	begin
-	if(RISING_EDGE(s_clk1hz)) then
+
+p_fsm_states : process(current_state,s_count,s_button_register,i_sensor,i_clk)
+-- originally this process was combinatorial but it produced synchronization problems
+-- if this goes at same speed but in another edge then it can work, if it is in the same edge it will oscillate between 2 states
+-- if this goes slower than the state change behaviour then it can work but it less accurate with the time count 
+begin
+	if(FALLING_EDGE(i_clk)) then
 		case current_state is
 			when RS =>
 				if (s_count = time_reset ) then 
@@ -192,39 +203,39 @@ begin
 	case current_state is
 		
 		when RS =>
-			s_main_light<= "001";
-			s_side_light <= "001";
-			s_ped_light <= "001";
+			s_main_light <= RED;
+			s_side_light <= RED;
+			s_ped_light <= RED;
 		
 		when MG =>
-			s_main_light<= "100";
-			s_side_light <= "001";
-			s_ped_light <= "001";
+			s_main_light <= GREEN;
+			s_side_light <= RED;
+			s_ped_light <= RED;
 		
 		when MY =>
-			s_main_light<= "010";
-			s_side_light <= "001";
-			s_ped_light <= "001";
+			s_main_light <= YELLOW;
+			s_side_light <= RED;
+			s_ped_light <= RED;
 		
 		when SG =>
-			s_main_light<= "001";
-			s_side_light <= "100";
-			s_ped_light <= "001";
+			s_main_light <= RED;
+			s_side_light <= GREEN;
+			s_ped_light <= RED;
 		
 		when SY =>
-			s_main_light<= "001";
-			s_side_light <= "010";
-			s_ped_light <= "001";
+			s_main_light <= RED;
+			s_side_light <= YELLOW;
+			s_ped_light <= RED;
 		
 		when ME =>
-			s_main_light<= "100";
-			s_side_light <= "001";
-			s_ped_light <= "001";
+			s_main_light <= GREEN;
+			s_side_light <= RED;
+			s_ped_light <= RED;
 			
 		when PG => 
-			s_main_light<= "001";
-			s_side_light <= "001";
-			s_ped_light <= "100";
+			s_main_light <= RED;
+			s_side_light <= RED;
+			s_ped_light <= GREEN;
 		
 		end case;
 		 
