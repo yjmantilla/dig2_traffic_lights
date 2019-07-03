@@ -38,11 +38,11 @@ entity FSM is
 	ATTRIBUTE LOC OF i_clk    : SIGNAL IS "B8";				-- system clock 50 MHz (Nexys2)
 	ATTRIBUTE LOC OF i_reset  : SIGNAL IS "H13";				-- BTN3
 	ATTRIBUTE LOC OF i_sensor : SIGNAL IS "G18";				-- SW0
-	ATTRIBUTE LOC OF i_button    : SIGNAL IS "E18";			-- SW1
+	ATTRIBUTE LOC OF i_button    : SIGNAL IS "H18";			-- SW1
 	ATTRIBUTE LOC OF o_main_light    : SIGNAL IS "J14,J15,K15";-- LED 0,1,2 : G,Y,R
 	ATTRIBUTE LOC OF o_side_light   : SIGNAL IS "K14,E17,P15"; -- LED 3,4,5: G,Y;R
-	ATTRIBUTE LOC OF o_ped_light  : SIGNAL IS "F4,F17,H17";  	-- LED 6,X,X --how to assign this to dont care?
-	ATTRIBUTE LOC OF o_led_clk : SIGNAL IS "R4"; -- LED 7
+	ATTRIBUTE LOC OF o_ped_light  : SIGNAL IS "R4,F17,H17";  	-- LED 6,X,X --how to assign this to dont care?
+	ATTRIBUTE LOC OF o_led_clk : SIGNAL IS "F4"; -- LED 7
 end FSM;
 
 architecture Behavioral of FSM is
@@ -70,7 +70,7 @@ architecture Behavioral of FSM is
 	-- Frequency Divider
 	
 	component freq_div
-		Generic( MAX_COUNT : INTEGER := 1);--25000000 for 1 second);
+		Generic( MAX_COUNT : INTEGER := 25000000);--25000000 for 1 second);
 		Port
 		(
 			i_clk : in STD_LOGIC;
